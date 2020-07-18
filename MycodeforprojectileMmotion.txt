@@ -1,0 +1,60 @@
+Attribute VB_Name = "Module1"
+
+Function findVinitialInYaxis(launchAngle As Double, launchSpeed As Double)
+
+Dim dblPi As Double
+dblPi = WorksheetFunction.Pi()
+
+If launchAngle >= 0 And launchAngle <= dblPi / 2 Then
+
+ findVinitialInYaxis = launchSpeed * Math.Sin(launchAngle)
+ 
+ElseIf launchAngle > dblPi / 2 And launchAngle <= dblPi Then
+ 
+ launchAngle = -launchAngle + dblPi
+ 
+ findVinitialInYaxis = launchSpeed * Math.Sin(launchAngle)
+ 
+Else
+ 
+findVinitialInYaxis = 0
+
+End If
+
+
+End Function
+Function findRange(launchAngle As Double, launchSpeed As Double, height As Double)
+
+Dim dblPi As Double
+dblPi = WorksheetFunction.Pi()
+
+If launchAngle >= 0 And launchAngle <= dblPi Then
+
+ findRange = launchSpeed * Math.Cos(launchAngle) * findTimeToLand(height, launchAngle)
+
+End If
+
+
+End Function
+
+Function findTimeToLand(height As Double, launchAngle As Double)
+
+Dim dblPi As Double
+dblPi = WorksheetFunction.Pi()
+
+
+If launchAngle >= 0 And launchAngle <= dblPi Then
+
+ findTimeToLand = 2 * Math.Sqr(2 * height)
+  
+Else
+ 
+ findTimeToLand = 0
+ 
+ End If
+
+
+End Function
+
+
+
